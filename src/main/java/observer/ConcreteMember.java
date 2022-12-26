@@ -50,4 +50,8 @@ public class ConcreteMember implements Member
                 + this.memberUSB;
         return s;
     }
+    public UndoableStringBuilder getMemberusb()
+    {
+        return memberUSB;
+    }
 }

@@ -33,10 +33,13 @@ public class GroupAdmin implements Sender
      */
     public void register(Member obj)
     {
-        this.members.add(obj);
-        ConcreteMember cMember = (ConcreteMember) obj;
-        String cName = ((ConcreteMember) obj).getName();
-        System.out.println(cName + " is successfully registered to the group.");
+        if (obj == null ||members.contains(obj)==true){
+        }else {
+            this.members.add(obj);
+            ConcreteMember cMember = (ConcreteMember) obj;
+            String cName = ((ConcreteMember) obj).getName();
+            System.out.println(cName + " is successfully registered to the group.");
+        }
     }
 
     /**
@@ -44,11 +47,15 @@ public class GroupAdmin implements Sender
      */
     public void unregister(Member obj)
     {
-        obj.update(new UndoableStringBuilder()); // no longer points to the "usb" attribute
-        this.members.remove(obj);
-        ConcreteMember cMember = (ConcreteMember) obj;
-        String cName = ((ConcreteMember) obj).getName();
-        System.out.println(cName + " is no longer part of the group.");
+        if (obj == null){
+
+        }else {
+            obj.update(new UndoableStringBuilder()); // no longer points to the "usb" attribute
+            this.members.remove(obj);
+            ConcreteMember cMember = (ConcreteMember) obj;
+            String cName = ((ConcreteMember) obj).getName();
+            System.out.println(cName + " is no longer part of the group.");
+        }
     }
 
     /**
