@@ -1,56 +1,113 @@
 package observer;
 
-public class GroupAdmin implements Sender{
+import java.util.ArrayList;
+import java.util.List;
 
+public class GroupAdmin implements Sender
+{
+    // Data members
+    private UndoableStringBuilder usb;
+    private ArrayList<Member> members;
 
+    // Constructor
     /**
-     * methods to register new member
-     * @param obj  member to register
+     * An empty constructor.
      */
-    @Override
-    public void register(Member obj) {
+    public GroupAdmin()
+    {
+        this.usb = new UndoableStringBuilder();
+        this.members = new ArrayList<Member>();
     }
 
     /**
-     * methods to unregister new member
-     * @param obj member to unregister
+     * this method returns the Members attribute
+     * @return ArrayList that contains all the members
      */
-    @Override
-    public void unregister(Member obj) {
-
+    public ArrayList<Member> getMembers()
+    {
+        return members;
     }
 
     /**
-     * Inserts the string into this character sequence.
-     * @param offset the string to insert.
-     * @param obj the index of the wanted position to insert the string.
+     * this method add a specific member to the Group admin.
      */
-    @Override
-    public void insert(int offset, String obj) {
+    public void register(Member obj)
+    {
+        this.members.add(obj);
+        ConcreteMember cMember = (ConcreteMember) obj;
+        String cName = ((ConcreteMember) obj).getName();
+        System.out.println(cName + " is successfully registered to the group.");
     }
 
     /**
-     * Appends the specified string to this character sequence.
+     * this method removes a specific member from the Group admin.
+     */
+    public void unregister(Member obj)
+    {
+        obj.update(new UndoableStringBuilder()); // no longer points to the "usb" attribute
+        this.members.remove(obj);
+        ConcreteMember cMember = (ConcreteMember) obj;
+        String cName = ((ConcreteMember) obj).getName();
+        System.out.println(cName + " is no longer part of the group.");
+    }
+
+    /**
+     * this method operates the "update" method in ConcreteMember on
+     * all the members that currently in the members list.
+     */
+    public void notifyMembers()
+    {
+        for (Member m:members)
+        {
+            m.update(this.usb);
+        }
+    }
+
+    /**
+     * This method insert a string into the "usb" attribute in a specific position.
+     * Then notify to all the members on the members attribute.
+     *
+     * @param offset the index of the wanted position to insert the string.
+     * @param obj the string to insert.
+     *
+     */
+    public void insert(int offset, String obj)
+    {
+        usb.insert(offset, obj);
+        notifyMembers();
+    }
+
+    /**
+     * This method appends a string to the end of the "usb" attribute.
+     * Then notify to all the members on the members attribute.
      * @param obj The string you want to append.
      */
-    @Override
-    public void append(String obj) {
+    public void append(String obj)
+    {
+        usb.append(obj);
+        notifyMembers();
     }
 
     /**
-     * Removes the characters in a substring of this sequence.
+     * This method deletes a substring from the "usb" attribute, between the two indexes it receives.
+     * Then notify to all the members on the members attribute.
+     *
      * @param start index of the start of the substring to delete.
-     * @param end  index of the end of the substring to delete.
+     * @param end   index of the end of the substring to delete.
      */
-    @Override
-    public void delete(int start, int end) {
-
+    public void delete(int start, int end)
+    {
+        usb.delete(start, end);
+        notifyMembers();
     }
 
     /**
-     * Erases the last change done to the document, reverting it to an older state.
+     * This method cancels the last change made in the "usb" attribute.
+     * Then notify to all the members on the members attribute.
      */
-    @Override
-    public void undo() {
+    public void undo()
+    {
+        usb.undo();
+        notifyMembers();
     }
 }
