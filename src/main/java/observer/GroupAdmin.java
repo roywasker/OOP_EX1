@@ -128,16 +128,4 @@ public class GroupAdmin implements Sender
         usb.undo();
         notifyMembers();
     }
-
-    public static void main(String[] args)
-    {
-        GroupAdmin gg = new GroupAdmin();
-        ConcreteMember yuval = new ConcreteMember("yuval");
-        gg.register(yuval);
-//        gg.register(null);
-        gg.register(yuval);
-
-        gg.unregister(null);
-
-    }
 }
