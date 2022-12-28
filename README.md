@@ -1,9 +1,9 @@
 
 # OOP Assignment 1
-Assignment 3 for the course Object-Oriented Programming by roy wasker and yuval Dahan.
+Assignment 3 for the course Object-Oriented Programming by Roy wasker and Yuval Dahan.
 
 ##  Overview
-In this project we We added some more functionality to the UndoableStringBuilder that we built in a previous assignment.
+In this project we added some more functionality to the UndoableStringBuilder that we built in the previous assignment.
 
 We add an option to organize a group of recipients of updates on the status of
 UndoableStringBuilder and send all updates to it in real time.
