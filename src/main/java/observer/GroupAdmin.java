@@ -30,12 +30,13 @@ public class GroupAdmin implements Sender
 
     /**
      * this method add a specific member to the Group admin.
+     * @param obj - A new Concrete member.
      */
     public void register(Member obj)
     {
         if (obj==null)
         {
-            System.out.println("ERROR - NullPointerException");
+           System.out.println("ERROR - NullPointerException");
         }
         else if (getMembers().contains(obj) == true)
         {
@@ -52,6 +53,7 @@ public class GroupAdmin implements Sender
 
     /**
      * this method removes a specific member from the Group admin.
+     * @param obj - A current Concrete member that on the member's list.
      */
     public void unregister(Member obj)
     {
