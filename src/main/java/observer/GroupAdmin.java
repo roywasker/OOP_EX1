@@ -33,8 +33,16 @@ public class GroupAdmin implements Sender
      */
     public void register(Member obj)
     {
-        if (obj == null ||members.contains(obj)==true){
-        }else {
+        if (obj==null)
+        {
+            System.out.println("ERROR - NullPointerException");
+        }
+        else if (getMembers().contains(obj) == true)
+        {
+            System.out.println("This Concrete member has allready registered.");
+        }
+        else
+        {
             this.members.add(obj);
             ConcreteMember cMember = (ConcreteMember) obj;
             String cName = ((ConcreteMember) obj).getName();
@@ -47,9 +55,12 @@ public class GroupAdmin implements Sender
      */
     public void unregister(Member obj)
     {
-        if (obj == null){
-
-        }else {
+        if (obj == null)
+        {
+            System.out.println("ERROR - NullPointerException");
+        }
+        else
+        {
             obj.update(new UndoableStringBuilder()); // no longer points to the "usb" attribute
             this.members.remove(obj);
             ConcreteMember cMember = (ConcreteMember) obj;
@@ -116,5 +127,17 @@ public class GroupAdmin implements Sender
     {
         usb.undo();
         notifyMembers();
+    }
+
+    public static void main(String[] args)
+    {
+        GroupAdmin gg = new GroupAdmin();
+        ConcreteMember yuval = new ConcreteMember("yuval");
+        gg.register(yuval);
+//        gg.register(null);
+        gg.register(yuval);
+
+        gg.unregister(null);
+
     }
 }
