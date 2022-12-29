@@ -60,7 +60,7 @@ to test edge cases.
 
 
 ### ConcreteMember tests
-For this class we wrote tests for update method.
+For this class we wrote tests for the update method.
 
 ### JvmUtilities tests
 In each test we wrote, we also added a JvmUtilities test to check the memory efficiency of the classes that we built.
