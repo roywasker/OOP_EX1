@@ -31,7 +31,7 @@ public class Tests {
         ConcreteMember member1 = new ConcreteMember("roy");
         ConcreteMember member2 = new ConcreteMember("yuval");
 
-        groupAdmin.register(member1); //register  2 member
+        groupAdmin.register(member1); //register 2 members
         groupAdmin.register(member2);
         assertTrue(groupAdmin.getMembers().contains(member1));
         assertTrue(groupAdmin.getMembers().contains(member2));
@@ -42,7 +42,7 @@ public class Tests {
         logger.info(()->JvmUtilities.objectFootprint(groupAdmin));
 
 
-        groupAdmin.register(member1);  //try register member that already exists in groupadmin
+        groupAdmin.register(member1);  //try register member that already exists in Groupadmin
         assertEquals(2, groupAdmin.getMembers().size());
         assertTrue(groupAdmin.getMembers().contains(member1));
         assertTrue(groupAdmin.getMembers().contains(member2));
@@ -56,7 +56,7 @@ public class Tests {
         ConcreteMember member1 = new ConcreteMember("roy");
         ConcreteMember member2 = new ConcreteMember("yuval");
 
-        groupAdmin.register(member1); //register  2 member and unregister one of them
+        groupAdmin.register(member1); //register 2 members and then unregister one of them
         groupAdmin.register(member2);
         groupAdmin.unregister(member1);
         assertFalse(groupAdmin.getMembers().contains(member1));
@@ -64,18 +64,18 @@ public class Tests {
         logger.info(()->JvmUtilities.objectFootprint(groupAdmin));
 
 
-        groupAdmin.unregister(null); //try unregister member that point to null
+        groupAdmin.unregister(null); //try to unregister a member that point to null
         assertEquals(1, groupAdmin.getMembers().size());
         logger.info(()->JvmUtilities.objectFootprint(groupAdmin));
 
 
-        ConcreteMember member4 = new ConcreteMember("noam"); //try unregister member that not in groupadmin
+        ConcreteMember member4 = new ConcreteMember("noam"); //try to unregister a member that is not in Groupadmin
         groupAdmin.unregister(member4);
         assertEquals(1, groupAdmin.getMembers().size());
         logger.info(()->JvmUtilities.objectFootprint(groupAdmin));
 
 
-        groupAdmin.unregister(member2); //try unregister member and let the groupadmin to be in size 0
+        groupAdmin.unregister(member2); //try to unregister a member and let the Groupadmin to be in size 0
         assertEquals(0, groupAdmin.getMembers().size());
         logger.info(()->JvmUtilities.objectFootprint(groupAdmin));
 
@@ -84,7 +84,7 @@ public class Tests {
     @Test
     void update() {
 
-        //check if after change in usb the member get the change
+        //check if the member got the change that applied in the usb
         ConcreteMember member1 = new ConcreteMember("roy");
         ConcreteMember member2 = null;
         UndoableStringBuilder usb = new UndoableStringBuilder();
@@ -96,7 +96,7 @@ public class Tests {
         logger.info(()->JvmUtilities.objectFootprint(member1));
 
 
-        //check if after add new member to groupadmin he get the usb after update
+        //check that after adding new member to Groupadmin he got the usb attribute after the update
         GroupAdmin groupAdmin = new GroupAdmin();
         groupAdmin.register(member1);
         groupAdmin.insert(0,"test");
