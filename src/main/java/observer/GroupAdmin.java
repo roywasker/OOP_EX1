@@ -30,11 +30,20 @@ public class GroupAdmin implements Sender
 
     /**
      * this method add a specific member to the Group admin.
+     * @param obj - A new Concrete member.
      */
     public void register(Member obj)
     {
-        if (obj == null ||members.contains(obj)==true){
-        }else {
+        if (obj==null)
+        {
+           System.out.println("ERROR - NullPointerException");
+        }
+        else if (getMembers().contains(obj) == true)
+        {
+            System.out.println("This Concrete member has allready registered.");
+        }
+        else
+        {
             this.members.add(obj);
             ConcreteMember cMember = (ConcreteMember) obj;
             String cName = ((ConcreteMember) obj).getName();
@@ -44,12 +53,16 @@ public class GroupAdmin implements Sender
 
     /**
      * this method removes a specific member from the Group admin.
+     * @param obj - A current Concrete member that on the member's list.
      */
     public void unregister(Member obj)
     {
-        if (obj == null){
-
-        }else {
+        if (obj == null)
+        {
+            System.out.println("ERROR - NullPointerException");
+        }
+        else
+        {
             obj.update(new UndoableStringBuilder()); // no longer points to the "usb" attribute
             this.members.remove(obj);
             ConcreteMember cMember = (ConcreteMember) obj;

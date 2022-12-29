@@ -18,6 +18,15 @@ public class ConcreteMember implements Member
     }
 
     /**
+     * An empty constructor.
+     */
+    public ConcreteMember()
+    {
+        this.memberUSB = new UndoableStringBuilder();
+        this.name = "this member";
+    }
+
+    /**
      * getter method for the Concrete member's name
      * @return ConcreteMember's name
      */
@@ -29,6 +38,7 @@ public class ConcreteMember implements Member
     /**
      * this method update this specific Concrete member, that is linked to
      * the Group admin, with the new changes that applied for the UndoableStringBuilder.
+     * @param usb the UndoableStringBuilder object.
      */
     public void update(UndoableStringBuilder usb)
     {
@@ -43,6 +53,7 @@ public class ConcreteMember implements Member
      * this is a toString method that uses the toString method
      * of the UndoableStringBuilder object.
      * it prints the last change that applied in the UndoableStringBuilder.
+     * @return String with details about this specific Concrete member.
      */
     public String toString()
     {
@@ -50,6 +61,11 @@ public class ConcreteMember implements Member
                 + this.memberUSB;
         return s;
     }
+
+    /**
+     * getter method for the Concrete member's UndoableStringBuilder attribute.
+     * @return UndoableStringBuilder attribute of this specific member.
+     */
     public UndoableStringBuilder getMemberusb()
     {
         return memberUSB;
