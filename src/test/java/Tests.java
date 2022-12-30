@@ -108,4 +108,48 @@ public class Tests {
         logger.info(()->JvmUtilities.objectFootprint(groupAdmin));
 
     }
+
+    @Test
+    void TestAppend()
+    {
+        GroupAdmin groupAdmin = new GroupAdmin();
+        ConcreteMember member1 = new ConcreteMember("roy");
+        groupAdmin.register(member1);
+        String expected = "";
+        groupAdmin.append(expected);
+        assertEquals(expected, member1.getMemberusb().toString());
+        logger.info(()->JvmUtilities.objectFootprint(groupAdmin));
+
+        groupAdmin.append(null);
+        assertEquals("null", member1.getMemberusb().toString());
+        logger.info(()->JvmUtilities.objectFootprint(groupAdmin));
+    }
+
+    @Test
+    void TestInsert() {
+        GroupAdmin groupAdmin = new GroupAdmin();
+        ConcreteMember member1 = new ConcreteMember("yuval");
+        groupAdmin.register(member1);
+        groupAdmin.insert(0,null);
+        assertEquals("", member1.getMemberusb().toString());
+        logger.info(()->JvmUtilities.objectFootprint(groupAdmin));
+
+        groupAdmin.insert(0,"");
+        assertEquals("", member1.getMemberusb().toString());
+        logger.info(()->JvmUtilities.objectFootprint(groupAdmin));
+
+        groupAdmin.insert(0,"roy");
+        assertEquals("roy", member1.getMemberusb().toString());
+        logger.info(()->JvmUtilities.objectFootprint(groupAdmin));
+    }
+
+    @Test
+    void TestDelete(){
+        GroupAdmin groupAdmin = new GroupAdmin();
+        ConcreteMember member1 = new ConcreteMember("roy");
+        groupAdmin.register(member1);
+        groupAdmin.delete(1,2);
+        assertEquals("", member1.getMemberusb().toString());
+        logger.info(()->JvmUtilities.objectFootprint(groupAdmin));
+    }
 }
