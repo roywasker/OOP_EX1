@@ -58,6 +58,7 @@ The tests were written using JUnit.
 For this class we wrote tests for register and unregister methods in order
 to test edge cases.
 
+In addition there are tests for the functionality of the UndoableStringBuilder method.
 
 ### ConcreteMember tests
 For this class we wrote tests for the update method.
